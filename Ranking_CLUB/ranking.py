@@ -76,18 +76,13 @@ def delete(id):
 @app.route('/update', methods= ['POST', 'GET'])
 def update():
     if request.method == 'POST':
-        _id = request.form['id']
-        club_id = request.form['club_id']
         ranking_code = request.form['ranking_code']
-        address = request.form['address']
-        phone_number = request.form['phone_number']
-        email_address = request.form['email_address']
-        other_player_details = request.form['other_player_details']
+        ranking_description = request.form['ranking_description']
         cur = mysql.connection.cursor()
         cur.execute("""
-        UPDATE ref_ranking_codes SET club_id=%s,ranking_code=%s,address=%s, phone_number=%s, email_address=%s, other_player_details=%s
-        WHERE  id=%s
-        """, (club_id,ranking_code,address,phone_number, email_address, other_player_details, _id))
+        UPDATE ref_ranking_codes SET ranking_description=%s
+        WHERE ranking_code=%s
+        """, (ranking_description, ranking_code))
         flash("Data Updated Successfully")
         mysql.connection.commit()
         return redirect(url_for('Index'))

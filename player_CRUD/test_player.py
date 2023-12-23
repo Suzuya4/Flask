@@ -45,13 +45,10 @@ class TestApp(TestCase):
         })
         self.assertEqual(response.status_code, 302)  # Expecting a redirect after successful insertion
 
-    def test_delete(self):
-        response = self.client.get('/delete/444')  # Replace '1' with an actual customer_id
-        self.assertEqual(response.status_code, 302)  # Expecting a redirect after successful deletion
 
     def test_update(self):
         response = self.client.post('/update', data={
-            'id': '2',  # Replace '1' with an actual customer_id
+            'id': '444',  # Replace '1' with an actual customer_id
             'club_id': '6',
             'ranking_code': '2',
             'address': 'ICT',
@@ -59,7 +56,14 @@ class TestApp(TestCase):
             'email_address': 'Admin@gmail.com',
             'other_player_details': 'Defending Champion 2020'
         })
-        self.assertEqual(response.status_code, 302)  # Expecting a redirect after successful update>
+        self.assertEqual(response.status_code, 302)
+
+
+    def test_delete(self):
+        response = self.client.get('/delete/444')  # Replace '1' with an actual customer_id
+        self.assertEqual(response.status_code, 302)  # Expecting a redirect after successful deletion
+
+  # Expecting a redirect after successful update>
 
 if __name__ == '__main__':
     unittest.main()
