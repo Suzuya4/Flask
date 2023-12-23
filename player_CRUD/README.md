@@ -25,7 +25,7 @@ This is a simple Flask application for managing player records. The application 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Suzuy4/flask-player-app.git
+   git clone https://github.com/Suzuya4/flask.git
    ```
 
 2. Navigate to the project directory:
