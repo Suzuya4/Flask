@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, flash, jsonify
+from flask import Flask, render_template, request, url_for, flash, jsonify, make_response
 from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
 import json
