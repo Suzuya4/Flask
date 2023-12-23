@@ -59,7 +59,7 @@ class TestApp(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_delete_route(self):
-        response = self.client.get('/delete/300')  # Replace '1' with an actual customer_id
+        response = self.client.get('/delete/300') 
         self.assertEqual(response.status_code, 302)
 
 

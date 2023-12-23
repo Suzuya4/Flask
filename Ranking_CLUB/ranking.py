@@ -103,5 +103,27 @@ def update():
     except Exception as e:
         return error_response(str(e), 500)
 
+@app.route('/search/<string:id>', methods=['GET'])
+def search(id):
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM ref_ranking_codes WHERE ranking_code=%s",(id))
+        data = cur.fetchall()
+        cur.close()
+
+        output_format = get_output_format()
+
+        if output_format == 'xml':
+            xml_data = convert_to_xml({'players': data})
+            return app.response_class(xml_data, content_type='application/xml')
+        elif output_format == 'json':
+            return jsonify(players=data)
+        else:
+            # Render HTML template
+            return render_template('index.html', players=data)
+
+    except Exception as e:
+        return error_response(str(e), 500)
+    
 if __name__ == "__main__":
     app.run(debug=True)

@@ -64,7 +64,6 @@ class TestApp(TestCase):
         response = self.client.get('/delete/444')  # Replace '1' with an actual customer_id
         self.assertEqual(response.status_code, 302)  # Expecting a redirect after successful deletion
 
-  # Expecting a redirect after successful update>
 
 if __name__ == '__main__':
     unittest.main()
