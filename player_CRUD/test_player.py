@@ -1,7 +1,7 @@
 import unittest
 from flask import Flask
 from flask_testing import TestCase
-from player import app  # Replace 'your_flask_app_file' with the actual filename of your Flask app
+from player import app  
 import json
 import xml.etree.ElementTree as ET 
 class TestApp(TestCase):
@@ -13,6 +13,7 @@ class TestApp(TestCase):
     def assert_xml(self, response):
         data = ET.fromstring(response.data)
         self.assertIsInstance(data, ET.Element)
+
     def create_app(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False  # Disable CSRF for testing
